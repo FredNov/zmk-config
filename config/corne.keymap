@@ -14,4 +14,4 @@
 // #define HAS_CAPSLOCK
 
 /* source the main keymap */
-#include "base.keymap"
+#include "base_fed.keymap"
