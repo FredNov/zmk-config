@@ -29,7 +29,7 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 // Personal includes
-//#include "includes/custom_keycodes.dtsi"
+#include "includes/custom_keycodes.dtsi"
 //#include "includes/settings.dtsi"
 //#include "includes/settings_pd.dtsi"
 //#include "includes/conditional_layers.dtsi"
@@ -290,7 +290,7 @@
             U_TOG_TP_SET         &trans           &trans           &trans           &trans           &trans               &trans           &trans           &trans           &trans           &trans          U_TOG_TP_SET
             &trans               &trans           &trans           &trans           &trans           &trans               &trans           &trans           &trans           &trans           &trans          &trans
             &trans               &trans           &trans           &trans           &trans           &trans               &trans           &trans           &trans           &trans           &trans          &trans
-                                     &ltog LGUI MOUSE_TP  &lt MOUSE_TP_KEYS SPACE   &trans           &trans               &m_lt_mkp NAV LCLK &lt_mkp NUM RCLK
+                                     &ltog LGUI MOUSE_TP  &lt MOUSE_TP_KEYS SPACE   &trans           &trans               &m_lt_mkp NAV LCLK &lt_mkp NAV RCLK
         >;
         // sensor-bindings = <&inc_dec_kp C_BRI_DN C_BRI_UP &inc_dec_kp LEFT RIGHT>;
     };
