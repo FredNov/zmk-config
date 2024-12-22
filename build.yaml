@@ -17,8 +17,6 @@ include:
     shield: think_corney_left
   - board: nice_nano_v2
     shield: think_corney_right 
-  - board: nice_nano_v2
-    shield: settings_reset
 
  # - board: nice_nano_v2
  #   shield: corne_left
