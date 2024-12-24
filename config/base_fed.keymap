@@ -273,15 +273,11 @@
    &kp LSHFT &kp Z &kp X &kp C &kp V  &kp B             &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &tog GAME
             &kp LCTRL &kp RET &kp SPACE                 &kp SPACE &mo RAISE &kp RALT
                         >;
-
+        };
 
     mouselr_layer {
         display-name = "Mouse";
-        // ------------------------------------------------------------------------------------------------
-        // | TOGGLE TP SET | TOGGLE TP SET | NONE     | TP_S_D   | TP_S_I   | TP_PT_I |   | TP_PT_I | TP_S_D   | TP_S_I   | NONE     | TOGGLE TP SET |
-        // | RESET         | RESET         | NONE     | TP_NI_D  | TP_NI_I  | TP_PT_D |   | TP_PT_D | TP_NI_D  | TP_NI_I  | NONE     | RESET         |
-        // | LOG           | LOG           | NONE     | TP_V6_D  | TP_V6_I  | NONE    |   | NONE    | TP_V6_D  | TP_V6_I  | NONE     | LOG           |
-        //                   | TOGGLE TP SET | LCLK    | RCLK     | NONE    |   | LCLK  | RCLK     |
+
         bindings = <
 &none   &none   &none   &msc SCRL_UP    &none   &none                       &none   &none   &none   &none   &none   &none
 &none   &none   &msc SCRL_LEFT   &msc SCRL_DOWN  &msc SCRL_RIGHT  &none     &none   &none   &none   &none   &none   &none
