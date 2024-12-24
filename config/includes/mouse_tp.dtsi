@@ -117,8 +117,8 @@
     &mouse_ps2_input_listener {
       move-accelerator = <&input_accelerator_move>;
       scroll-accelerator = <&input_accelerator_scroll>;
-      scroll-layers = <BASE MOUSE_TP_SET>;
-      scroll-layers-reverse-direction-horizontal;
+      //scroll-layers = <BASE MOUSE_TP_SET>;
+      //scroll-layers-reverse-direction-horizontal;
 
       xy-swap;
       x-invert;
@@ -164,8 +164,8 @@
 
       // Enable clicking by tapping on the TP.
       // Not all TPs support this.
-      tp-press-to-select;
-      tp-press-to-select-threshold = <10>;
+      //tp-press-to-select;
+      //tp-press-to-select-threshold = <10>;
 
 
       // Adjust axis settings on the TP
