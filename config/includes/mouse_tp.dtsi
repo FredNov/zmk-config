@@ -117,8 +117,8 @@
     &mouse_ps2_input_listener {
       move-accelerator = <&input_accelerator_move>;
       scroll-accelerator = <&input_accelerator_scroll>;
-      //scroll-layers = <BASE MOUSE_TP_SET>;
-      //scroll-layers-reverse-direction-horizontal;
+      scroll-layers = <MOUSE_TP_SET>;
+      scroll-layers-reverse-direction-horizontal;
 
       xy-swap;
       x-invert;
@@ -126,7 +126,7 @@
 
       // Set the layer that should automatically activate when the mouse is
       // moving.
-      layer-toggle = <MOUSE_TP_SET>;
+      layer-toggle = <MOUSELR>;
 
       // How long the mouse needs to move for before the layer is activated (to
       // avoid accidental activations while typing) (Default: 250)
