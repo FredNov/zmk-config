@@ -117,8 +117,9 @@
     &mouse_ps2_input_listener {
       move-accelerator = <&input_accelerator_move>;
       scroll-accelerator = <&input_accelerator_scroll>;
-      scroll-layers = <MOUSE_TP_SET>;
-      scroll-layers-reverse-direction-horizontal;
+      scroll-layers = <RAISE LOWR>;
+      //scroll-layers-reverse-direction-horizontal;
+      scroll-layers-reverse-direction-vertical;
 
       xy-swap;
       x-invert;
