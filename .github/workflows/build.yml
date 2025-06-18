@@ -42,19 +42,21 @@ jobs:
         run: west zephyr-export
         
       - name: West Build
-        run: west build -s zmk/app -b ${{ matrix.board }} -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" ${{ matrix.cmake-args }}
+        run: west build -s zmk/app -b ${{ matrix.board }} ${{ matrix.shield-arg }} -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" ${{ matrix.cmake-args }}
         
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.board }}
+          name: ${{ matrix.board }}${{ matrix.shield }}
           path: |
             build/zephyr/zmk.uf2
             build/zephyr/zmk.hex
     strategy:
       matrix:
         include:
-          - board: corne_left
-          - board: corne_right
-          - board: think_corney_left
-          - board: think_corney_right
+          - board: nice_nano_v2
+            shield: think_corney_left
+            shield-arg: -DSHIELD=think_corney_left
+          - board: nice_nano_v2
+            shield: think_corney_right
+            shield-arg: -DSHIELD=think_corney_right
