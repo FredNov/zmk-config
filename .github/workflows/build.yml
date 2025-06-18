@@ -1,5 +1,58 @@
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+  substitute-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Substitute password placeholder
+        run: |
+          if [ -n "${{ secrets.PASSWORD_MACRO }}" ]; then
+            sed -i 's/PASSWORD_PLACEHOLDER/${{ secrets.PASSWORD_MACRO }}/g' config/base_fed.keymap
+          fi
+          
+      - name: Cache west modules
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-zephyr-modules
+        with:
+          path: |
+            modules/
+            tools/
+            zephyr/
+            bootloader/
+            zmk/
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/west.yml', '**/build.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+            
+      - name: West Init
+        run: west init -l config
+        
+      - name: West Update
+        run: west update
+        
+      - name: West Zephyr export
+        run: west zephyr-export
+        
+      - name: West Build
+        run: west build -s zmk/app -b ${{ matrix.board }} -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" ${{ matrix.cmake-args }}
+        
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.board }}
+          path: |
+            build/zephyr/zmk.uf2
+            build/zephyr/zmk.hex
+    strategy:
+      matrix:
+        include:
+          - board: corne_left
+          - board: corne_right
+          - board: think_corney_left
+          - board: think_corney_right
