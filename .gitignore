@@ -1,2 +1,3 @@
 .DS_Store
 /keymap_img/keymap.yaml
+config/secrets.dtsi

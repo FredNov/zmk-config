@@ -47,7 +47,7 @@
             #binding-cells = <0>;
             wait-ms = <20>;
             tap-ms = <20>;
-            bindings = <PASSWORD_PLACEHOLDER>;
+            bindings = <&macro_tap &kp P &kp A &kp S &kp S &kp W &kp O &kp R &kp D>;
         };
 
         pwr: pwr {
