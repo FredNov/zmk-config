@@ -227,8 +227,8 @@
             //                   │ CTL │ LWR │ SPC │   │ SPC │ RSE │ ALT │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &td1          &kp_tp LC(Q) Q       &kp_tp LC(W) W      &kp_tp LC(E) E    &kp_tp LC(R) R      &kp_tp LC(T) T           &kp Y      &kp U          &kp I      &kp O    &kp P     &kp BSPC
-                &ht_atab 0 TAB &kp_tp LC(A) A      &kp_tp LC(S) S       &kp D       &kp_tp LC(F) F              &kp G                 &kp H      &kp J          &kp K      &kp L    &kp SEMI  &kp SQT
+                &td1          &ht_tp LC(Q) Q       &ht_tp LC(W) W      &ht_tp LC(E) E    &ht_tp LC(R) R      &ht_tp LC(T) T           &kp Y      &kp U          &kp I      &kp O    &kp P     &kp BSPC
+                &ht_atab 0 TAB &ht_tp LC(A) A      &ht_tp LC(S) S       &kp D       &ht_tp LC(F) F              &kp G                 &kp H      &kp J          &kp K      &kp L    &kp SEMI  &kp SQT
                 &kp LSHFT     &ht_tp LC(Z) Z   &ht_tp LC(X) X   &ht_tp LC(C) C   &ht_tp LC(V) V     &kp B                 &kp N      &kp M          &kp COMMA  &kp DOT  &kp FSLH  &td0
                                                                 &kp LCTRL        &lt LOWR RET       &lt NAV SPACE         &kp SPACE  &lt RAISE BSPC &kp RALT
             >;
