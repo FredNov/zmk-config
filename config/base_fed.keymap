@@ -227,8 +227,8 @@
             //                   │ CTL │ LWR │ SPC │   │ SPC │ RSE │ ALT │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &td1          &kp Q            &kp W            &kp E            &kp R              &kp T                 &kp Y      &kp U          &kp I      &kp O    &kp P     &kp BSPC
-                &ht_atab 0 TAB &kp A            &kp S            &kp D            &kp F              &kp G                 &kp H      &kp J          &kp K      &kp L    &kp SEMI  &kp SQT
+                &td1          &kp_tp LC(Q) Q       &kp_tp LC(W) W      &kp_tp LC(E) E    &kp_tp LC(R) R      &kp_tp LC(T) T           &kp Y      &kp U          &kp I      &kp O    &kp P     &kp BSPC
+                &ht_atab 0 TAB &kp_tp LC(A) A      &kp_tp LC(S) S       &kp D       &kp_tp LC(F) F              &kp G                 &kp H      &kp J          &kp K      &kp L    &kp SEMI  &kp SQT
                 &kp LSHFT     &ht_tp LC(Z) Z   &ht_tp LC(X) X   &ht_tp LC(C) C   &ht_tp LC(V) V     &kp B                 &kp N      &kp M          &kp COMMA  &kp DOT  &kp FSLH  &td0
                                                                 &kp LCTRL        &lt LOWR RET       &lt NAV SPACE         &kp SPACE  &lt RAISE BSPC &kp RALT
             >;
@@ -236,21 +236,24 @@
 
         lower_layer {
             // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
-            // │ td2 │Pause│  7  │  8  │  9  │SIGN │   │PgUp │PWrd │ Up  │NWrd │DLine│  \  │
+            // │ td2 │Pause│  7  │  8  │  9  │SIGN │   │PgUp │Bsps │ Up  │ del │DLine│  \  │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-            // │  ~  │ F8  │  4  │  5  │  6  │LANG │   │PgDn │Left │Down │Right│Bspc │ Del │
+            // │  ~  │ F8  │  4  │  5  │  6  │LANG │   │PgDn │Left │Down │Right│Entr │ Del │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
             // │Bspc │  0  │  1  │  2  │  3  │ LNC │   │ End │LStr │ End │LEnd │delWL│delWR│
             // └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
             //                   │  .  │     │     │   │     │     │     │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &td2       &kp PAUSE_BREAK &ht_tp F7 N7    &ht_tp F8 N8    &ht_tp F9 N9    &ht_tp F10 MINUS     &kp PG_UP  &kp LC(LEFT)  &kp UP    &kp LC(RIGHT) &kp LC(DEL)  &kp BSLH
-                &kp TILDE &kp F8          &ht_tp F4 N4    &ht_tp F5 N5    &ht_tp F6 N6    &ht_tp F11 LG(SPACE) &kp PG_DN  &kp LEFT      &kp DOWN  &kp RIGHT     &kp BSPC     &kp DEL
+                &td2       &kp PAUSE_BREAK &ht_tp F7 N7    &ht_tp F8 N8    &ht_tp F9 N9    &ht_tp F10 MINUS     &kp PG_UP  &kp BSPC  &kp UP  &kp DEL &kp LC(DEL)  &kp BSLH
+                &kp TILDE &kp F8          &ht_tp F4 N4    &ht_tp F5 N5    &ht_tp F6 N6    &ht_tp F11 LG(SPACE) &kp PG_DN  &kp LEFT      &kp DOWN  &kp RIGHT     &kp RET     &kp DEL
                 &kp BSPC   &kp N0          &ht_tp F1 N1    &ht_tp F2 N2    &ht_tp F3 N3    &ht_tp F12 LA(SPACE) &kp END    &kp LC(HOME)  &kp END   &kp LC(END)   &kp LC(BSPC) &kp LC(DEL)
                                                             &kp DOT         &trans          &sk RGUI             &sk RGUI   &trans        &trans
             >;
+
         };
+
+
 
         raise_layer {
             // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
@@ -272,11 +275,11 @@
 
         nav_layer {
             // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
-            // │fclos│ffwd │ftleft│ up │ftrigt│fback│   │     │     │     │     │     │     │
+            // │fclos│ffwd │ftleft│ up │ftrgt│fback│   │     │     │     │     │     │     │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-            // │wlose│wsleft│ Left│Down │Right│wsr  │   │scrSh│vDown│mute │ vUP │     │sleep│
+            // │wlose│wslft│ Left│Down │Right│wsr  │   │scrSh│vDown│mute │ vUP │     │sleep│
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-            // │wleft│wright│wdown│ wup │wnext│wprev│   │scrSh│prev │stop │next │     │ pwr │
+            // │wleft│wriht│wdown│ wup │wnext│wprev│   │scrSh│prev │stop │next │     │ pwr │
             // └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
             //                   │     │     │     │   │     │     │     │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
@@ -299,10 +302,10 @@
             //                   │ CTL │ LWR │ SPC │   │ SPC │ RSE │ ALT │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &td1      &kp Q   &kp W     &kp E     &kp R      &kp T        &kp Y     &kp U     &kp I     &kp O   &kp P    &kp BSPC
+                &kp ESC   &kp Q   &kp W     &kp E     &kp R      &kp T        &kp Y     &kp U     &kp I     &kp O   &kp P    &kp BSPC
                 &kp TAB   &kp A   &kp S     &kp D     &kp F      &kp G        &kp H     &kp J     &kp K     &kp L   &kp SEMI &kp SQT
-                &kp LSHFT &kp Z   &kp X     &kp C     &kp V      &kp B        &kp N     &kp M     &kp COMMA &kp DOT &kp FSLH &tog GAME
-                                  &kp LCTRL &kp RET   &kp SPACE               &kp SPACE &mo RAISE &kp RALT
+                &kp LSHFT &kp Z   &kp X     &kp C     &kp V      &kp B        &kp N     &kp M     &kp COMMA &kp DOT &kp FSLH &tog RET
+                                  &kp LCTRL &trans   &kp SPACE               &kp SPACE &trans &kp RALT
             >;
         };
 
