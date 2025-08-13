@@ -199,6 +199,14 @@
             tapping-term-ms = <200>;
             bindings = <&kp>, <&kp>;
         };
+
+        ht_grave_tilde: ht_grave_tilde {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+        };
     };
 };
 
@@ -290,7 +298,7 @@
             //                   │     │     │     │   │     │     │     │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &kp LC(W)    &kp LA(LEFT)     &kp LC(PG_UP) &kp UP      &kp LC(PG_DN)    &kp LA(RIGHT)         &kp LG(N)         &kp LG(H)    &trans        &trans        &trans &trans
+                &kp LG(GRAVE) &kp LG(LT)      &kp LC(PG_UP) &kp LG(GT)  &kp LC(PG_DN)    &kp LA(RIGHT)         &kp LG(N)         &kp LG(H)    &trans        &trans        &trans &trans
                 &kp LA(F4)   &kp LG(LC(LEFT)) &kp LEFT      &kp DOWN    &kp RIGHT        &ht_tp DEL LG(LC(RIGHT)) &kp LG(LS(S))  &kp C_VOL_DN &kp C_MUTE    &kp C_VOL_UP  &trans &sleep
                 &kp LG(DOWN) &kp LG(UP)       &kp LG(LEFT)  &kp LG(RIGHT) &kp LG(LS(LEFT)) &kp LG(LS(RIGHT))     &kp LC(RA(LS(H))) &kp C_PREV   &kp C_PP      &kp C_NEXT    &trans &pwr
                                                              &kp LGUI     &trans           &trans                &trans            &kp LC(PLUS) &kp LC(MINUS)
@@ -365,7 +373,7 @@
             //                   │     │     │     │   │     │     │     │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &trans     &trans        &trans        &mail        &trans  &trans        &kp PG_UP  &kp BSPC      &kp UP    &kp DEL   &kp LC(DEL)   &trans
+                &ht_grave_tilde TILDE GRAVE &trans        &trans        &mail        &trans  &trans        &kp PG_UP  &kp BSPC      &kp UP    &kp DEL   &kp LC(DEL)   &trans
                 &trans     &kp LA(BSPC)  &kp LC(LEFT)  &trans       &trans  &trans        &kp PG_DN  &kp LEFT      &kp DOWN  &kp RIGHT &kp RET       &trans  
                 &trans     &kp LA(BSPC)  &kp LC(LEFT)  &trans       &trans  &trans        &trans     &trans        &trans    &trans    &kp LC(RIGHT) &kp LC(DEL)
                                                        &trans       &trans  &trans        &trans     &trans        &trans
