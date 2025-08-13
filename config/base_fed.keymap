@@ -141,6 +141,14 @@
             bindings = <&kp GRAVE>, <&kp LC(RS(ESC))>;
         };
 
+        td_lower_gui: tap_dance_lower_gui {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_LOWER_GUI";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&lt LOWR RET>, <&ht_gui LGUI LGUI>;
+        };
+
         // Hold-tap behaviors
         ht_tp: holdTap_tapPreferred {
             compatible = "zmk,behavior-hold-tap";
@@ -193,6 +201,21 @@
             tapping-term-ms = <250>;
             bindings = <&mo>, <&mkp>;
         };
+
+        /*
+         * GUI Hold-Tap
+         *
+         * Usage: &ht_gui 0 0
+         * Tap: GUI key press
+         * Hold: GUI key hold
+         */
+        ht_gui: ht_gui {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+        };
     };
 };
 
@@ -230,7 +253,7 @@
                 &td1          &ht_tp LC(Q) Q       &ht_tp LC(W) W      &ht_tp LC(E) E    &ht_tp LC(R) R      &ht_tp LC(T) T           &kp Y      &kp U          &kp I      &kp O    &kp P     &kp BSPC
                 &ht_atab 0 TAB &ht_tp LC(A) A      &ht_tp LC(S) S       &kp D       &ht_tp LC(F) F              &kp G                 &kp H      &kp J    &kp K   &ht_tp LC(L) L     &kp SEMI  &kp SQT
                 &kp LSHFT     &ht_tp LC(Z) Z   &ht_tp LC(X) X   &ht_tp LC(C) C   &ht_tp LC(V) V     &kp B                 &kp N      &kp M          &kp COMMA  &kp DOT  &kp FSLH  &td0
-                                                                &kp LCTRL        &lt LOWR RET       &lt NAV SPACE         &kp SPACE  &lt RAISE BSPC &kp RALT
+                                                                &kp LCTRL        &td_lower_gui       &lt NAV SPACE         &kp SPACE  &lt RAISE BSPC &kp RALT
             >;
         };
 
