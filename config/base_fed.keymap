@@ -126,19 +126,12 @@
             bindings = <&kp ESC>, <&kp DEL>;
         };
 
-        td2: tap_dance_2 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_2";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp GRAVE>, <&kp LC(RS(ESC))>;
-        };
 
         td_lower_gui: tap_dance_lower_gui {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_LOWER_GUI";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <150>;
             bindings = <&lt LOWR RET>, <&ht_gui LGUI LGUI>;
         };
 
@@ -259,7 +252,7 @@
             //                   │  .  │     │     │   │     │     │     │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &td2       &kp PAUSE_BREAK &ht_tp F7 N7    &ht_tp F8 N8    &ht_tp F9 N9    &ht_tp F10 MINUS     &kp LC(PG_UP)  &kp LC(PG_DN) &kp PG_UP  &kp LC(PG_DN) &kp LC(DEL)  &kp BSLH
+                &kp LC(RS(ESC)) &kp PAUSE_BREAK &ht_tp F7 N7    &ht_tp F8 N8    &ht_tp F9 N9    &ht_tp F10 MINUS     &kp LC(PG_UP)  &kp LC(PG_DN) &kp PG_UP  &kp LC(PG_DN) &kp LC(DEL)  &kp BSLH
                 &kp TILDE &kp F8          &ht_tp F4 N4    &ht_tp F5 N5    &ht_tp F6 N6    &ht_tp F11 LG(SPACE) &kp PG_DN      &kp LA(LEFT)  &kp PG_DN  &kp LA(RIGHT) &kp LC(W)   &kp DEL
                 &kp BSPC   &kp N0          &ht_tp F1 N1    &ht_tp F2 N2    &ht_tp F3 N3    &ht_tp F12 LA(SPACE) &kp END        &kp LA(HOME)  &kp END    &kp LC(END)   &kp LC(BSPC) &kp LC(DEL)
                                                             &kp DOT         &trans          &sk RGUI             &sk RGUI   &trans        &trans
@@ -298,7 +291,7 @@
             //                   │     │     │     │   │     │     │     │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &kp LG(GRAVE) &kp LG(LT)      &kp LC(PG_UP) &kp LG(GT)  &kp LC(PG_DN)    &kp LA(RIGHT)         &kp LG(N)         &kp LG(H)    &trans        &trans        &trans &trans
+                &kp LG(GRAVE) &kp LG(COMMA)   &kp LC(PG_UP) &kp LG(PERIOD) &kp LC(PG_DN)    &kp LA(RIGHT)         &kp LG(N)         &kp LG(H)    &trans        &trans        &trans &trans
                 &kp LA(F4)   &kp LG(LC(LEFT)) &kp LEFT      &kp DOWN    &kp RIGHT        &ht_tp DEL LG(LC(RIGHT)) &kp LG(LS(S))  &kp C_VOL_DN &kp C_MUTE    &kp C_VOL_UP  &trans &sleep
                 &kp LG(DOWN) &kp LG(UP)       &kp LG(LEFT)  &kp LG(RIGHT) &kp LG(LS(LEFT)) &kp LG(LS(RIGHT))     &kp LC(RA(LS(H))) &kp C_PREV   &kp C_PP      &kp C_NEXT    &trans &pwr
                                                              &kp LGUI     &trans           &trans                &trans            &kp LC(PLUS) &kp LC(MINUS)
