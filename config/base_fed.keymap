@@ -171,18 +171,6 @@
         };
 
         /*
-         * Swapper ALT + TAB
-         *
-         * Use ALT TAB app switcher with tri-state behavior.
-         * Tap once to open, tap again to cycle, press any other key to select.
-         */
-        swapper_alt_tab: swapper_alt_tab {
-            compatible = "zmk,behavior-tri-state";
-            #binding-cells = <0>;
-            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-        };
-
-        /*
          * Layer Toggle
          *
          * Usage: &ltog LGUI NAV
@@ -279,15 +267,15 @@
             // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
             // │  ~  │Pause│  7  │  8  │  9  │SIGN │   │PgUp │Bsps │ Up  │ del │DLine│  \  │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-            // │A+TAB│ F8  │  4  │  5  │  6  │LANG │   │PgDn │Left │Down │Right│Entr │ Del │
+            // │atab │ F8  │  4  │  5  │  6  │LANG │   │PgDn │Left │Down │Right│Entr │ Del │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
             // │Bspc │  0  │  1  │  2  │  3  │ LNC │   │ End │LStr │ End │LEnd │delWL│delWR│
             // └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
             //                   │  .  │     │     │   │     │     │     │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &kp TILDE        &kp PAUSE_BREAK &ht_tp F7 N7    &ht_tp F8 N8    &ht_tp F9 N9    &ht_tp F10 MINUS     &kp LC(PG_UP)  &kp LC(PG_DN) &kp PG_UP  &kp LC(PG_DN) &kp LC(DEL)  &kp BSLH
-                &swapper_alt_tab &kp F8          &ht_tp F4 N4    &ht_tp F5 N5    &ht_tp F6 N6    &ht_tp F11 LG(SPACE) &kp PG_DN      &kp LA(LEFT)  &kp PG_DN  &kp LA(RIGHT) &kp LC(W)   &kp DEL
+                &kp TILDE     &kp PAUSE_BREAK &ht_tp F7 N7    &ht_tp F8 N8    &ht_tp F9 N9    &ht_tp F10 MINUS     &kp LC(PG_UP)  &kp LC(PG_DN) &kp PG_UP  &kp LC(PG_DN) &kp LC(DEL)  &kp BSLH
+                &ht_atab 0 TAB &kp F8          &ht_tp F4 N4    &ht_tp F5 N5    &ht_tp F6 N6    &ht_tp F11 LG(SPACE) &kp PG_DN      &kp LA(LEFT)  &kp PG_DN  &kp LA(RIGHT) &kp LC(W)   &kp DEL
                 &kp BSPC   &kp N0          &ht_tp F1 N1    &ht_tp F2 N2    &ht_tp F3 N3    &ht_tp F12 LA(SPACE) &kp END        &kp LA(HOME)  &kp END    &kp LC(END)   &kp LC(BSPC) &kp LC(DEL)
                                                             &kp DOT         &trans          &sk RGUI             &sk RGUI   &trans        &trans
             >;
