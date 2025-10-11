@@ -173,15 +173,16 @@
 };
 
 // ===== CONDITIONAL LAYERS =====
-/ {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        dual_hold_layer {
-            if-layers = <LOWR RAISE>;
-            then-layer = <MOUSE_TP_SET>;
-        };
-    };
-};
+// Disabled to allow trackpoint layer-toggle to work without conflicts
+// / {
+//     conditional_layers {
+//         compatible = "zmk,conditional-layers";
+//         dual_hold_layer {
+//             if-layers = <LOWR RAISE>;
+//             then-layer = <MOUSE_TP_SET>;
+//         };
+//     };
+// };
 
 // ===== CAPS WORD CONFIGURATION =====
 &caps_word {
