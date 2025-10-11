@@ -293,14 +293,14 @@
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
             // │     │wslft│Left │Down │Right│     │   │wrdLf│left │down │right│wrdRt│PgDn │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-            // │wDown│wUp  │wLeft│wRght│wnext│wprev│   │     │     │     │     │     │     │
+            // │wDown│wUp  │wLeft│wRght│wnext│wprev│   │ Home│ End │     │     │     │     │
             // └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
             //                   │     │     │     │   │     │     │     │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
                 &kp LA(F4)   &kp LA(LEFT)    &kp LC(PG_UP)   &ht_tp LC(W) UP     &kp LC(PG_DN)    &kp LA(RIGHT)   &kp LC(BSPC)  &kp BSPC      &kp UP    &kp DEL   &kp LC(DEL)   &kp PG_UP
                 &trans       &kp LG(LC(LEFT)) &kp LEFT      &kp DOWN    &kp RIGHT        &trans           &kp LC(LEFT)  &kp LEFT      &kp DOWN  &kp RIGHT &kp LC(RIGHT)       &kp PG_DN
-                &kp LG(DOWN) &kp LG(UP)       &kp LG(LEFT)  &kp LG(RIGHT) &kp LG(LS(LEFT)) &kp LG(LS(RIGHT))     &trans     &trans        &trans    &trans    &trans        &trans
+                &kp LG(DOWN) &kp LG(UP)       &kp LG(LEFT)  &kp LG(RIGHT) &kp LG(LS(LEFT)) &kp LG(LS(RIGHT))     &kp HOME   &kp END       &trans    &trans    &trans        &trans
                                                              &trans       &trans           &trans                &trans     &trans        &trans
             >;
         };
