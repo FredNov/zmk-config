@@ -65,6 +65,52 @@ Build configuration is defined in `build.yaml` which specifies:
 - Requires `keymap` CLI tool (not installed in this environment)
 - Generates `keymap.svg` from keymap configuration
 
+#### HTML Keymap Viewer
+- **keymap_viewer.html**: Interactive HTML page showing all layers in one scrollable view
+- Self-contained single HTML file with embedded CSS and JavaScript
+- No external dependencies - just open in any browser
+
+**To create/update the HTML keymap viewer:**
+
+1. **Parse the keymap file** (`config/base_fed.keymap`):
+   - Extract layer definitions and key bindings
+   - Identify key types: normal, modifier, layer switch, special, combo, transparent
+   - Map ZMK keycodes to readable labels (e.g., `&kp BSPC` → "BSPC")
+
+2. **Design principles**:
+   - Dark theme (#1a1a1a background) for better visibility
+   - High-contrast color coding:
+     - Red (#ff6b6b) = Modifiers (Ctrl, Shift, Alt, GUI)
+     - Cyan (#4ecdc4) = Layer switches
+     - Yellow (#ffd93d) = Special functions
+     - Purple (#a78bfa) = Combos/Macros
+     - Gray (#4a4a4a) = Normal keys
+     - Dark gray (faded) = Transparent keys
+   - All layers on one page (no tabs) for easy reference
+
+3. **Structure**:
+   - Legend at top explaining color scheme
+   - Each layer in its own section with title and description
+   - Split keyboard layout showing both halves side by side
+   - Responsive design (stacks vertically on mobile)
+
+4. **Implementation**:
+   - Store layer data as JavaScript objects
+   - Each layer has: name, description, keys array (8 rows), keyTypes array
+   - Keys array: rows 0-2 = left half, row 3 = left thumbs, rows 4-6 = right half, row 7 = right thumbs
+   - Dynamically generate keyboard sections using DOM manipulation
+   - CSS Grid for keyboard layout (6 columns per half, thumb row spans columns 2-5)
+
+5. **Key mapping tips**:
+   - `&lt LAYER KEY` = hold for layer, tap for key (show as "KEY→LAYERNAME")
+   - `&kp KEY` = regular keypress
+   - `&trans` = transparent (passes through to lower layer)
+   - `&tog LAYER` = toggle layer on/off (show as "LAYER↔")
+   - Custom macros and behaviors need manual labeling
+   - Always use layer names (LOWR, RAISE, NAV, etc.) instead of numbers for clarity
+   - Use → arrow to indicate "hold switches to layer"
+   - Use ↔ arrow to indicate "toggle layer on/off"
+
 ### Configuration Changes
 When modifying keymaps:
 1. Edit the appropriate `.keymap` file in `config/`
