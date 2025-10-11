@@ -29,16 +29,14 @@ This is a ZMK (Zephyr Mechanical Keyboard) firmware configuration repository for
   - BASE (0): Default QWERTY layer
   - LOWR (1): Lower symbols/numbers
   - RAISE (2): Upper symbols/functions
-  - NAV (3): Navigation and arrows
-  - GAME (4): Gaming layer
-  - MOUSELR (5): Mouse left/right
-  - MOUSE_TP_SET (6): Mouse/trackpoint settings
+  - GAME (3): Gaming layer
+  - MOUSE_TP_SET (4): Mouse/trackpoint settings
+  - NAV (5): Navigation and window management
+  - GAME_NUM (6): Game numbers layer
 
 ### Modular Includes
 The keymap uses a modular structure with includes in `config/includes/`:
 - `behaviours_*.dtsi`: Custom behavior definitions
-- `combos.dtsi`: Key combination shortcuts
-- `conditional_layers.dtsi`: Layer activation logic
 - `macros.dtsi`: Custom macro definitions
 - `mouse_*.dtsi`: Mouse and trackpoint configurations
 - `settings*.dtsi`: Keyboard settings and power management

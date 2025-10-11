@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkCorney Keymap Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .layer-section {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid #3a3a3a;
+        }
+
+        .layer-header {
+            margin-bottom: 20px;
+        }
+
+        .layer-title {
+            font-size: 1.8em;
+            color: #4a9eff;
+            margin-bottom: 8px;
+        }
+
+        .layer-description {
+            color: #b0b0b0;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .keyboard {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .keyboard-half {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+        }
+
+        .key {
+            aspect-ratio: 1;
+            background: #3a3a3a;
+            border: 2px solid #4a4a4a;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px;
+            text-align: center;
+            min-height: 65px;
+            word-break: break-word;
+            color: #e0e0e0;
+        }
+
+        .key-modifier {
+            background: #ff6b6b;
+            border-color: #ff8787;
+            color: #ffffff;
+        }
+
+        .key-layer {
+            background: #4ecdc4;
+            border-color: #6ee7df;
+            color: #000000;
+        }
+
+        .key-special {
+            background: #ffd93d;
+            border-color: #ffe066;
+            color: #000000;
+        }
+
+        .key-combo {
+            background: #a78bfa;
+            border-color: #c4b5fd;
+            color: #ffffff;
+        }
+
+        .key-trans {
+            background: #2a2a2a;
+            border-color: #3a3a3a;
+            color: #666;
+        }
+
+        .key-normal {
+            background: #4a4a4a;
+            border-color: #5a5a5a;
+            color: #ffffff;
+        }
+
+        .thumb-row {
+            grid-column: 2 / 6;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .thumb-row .key {
+            min-width: 80px;
+        }
+
+        .legend {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #3a3a3a;
+        }
+
+        .legend h2 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+            border: 2px solid #4a4a4a;
+        }
+
+        .legend-text {
+            font-size: 14px;
+            color: #e0e0e0;
+        }
+
+        @media (max-width: 1200px) {
+            .keyboard {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .layer-section {
+                padding: 15px;
+            }
+
+            .key {
+                font-size: 11px;
+                min-height: 55px;
+            }
+
+            .layer-title {
+                font-size: 1.4em;
+            }
+        }
+
+        .key-label {
+            font-size: 12px;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎹 ThinkCorney Keymap - All Layers</h1>
+
+        <div class="legend">
+            <h2>Color Legend</h2>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4a4a4a; border-color: #5a5a5a;"></div>
+                    <span class="legend-text">Normal Keys</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff6b6b; border-color: #ff8787;"></div>
+                    <span class="legend-text">Modifiers (Ctrl, Shift, Alt, GUI)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4ecdc4; border-color: #6ee7df;"></div>
+                    <span class="legend-text">Layer Switch</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffd93d; border-color: #ffe066;"></div>
+                    <span class="legend-text">Special Functions</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #a78bfa; border-color: #c4b5fd;"></div>
+                    <span class="legend-text">Combos/Macros</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #2a2a2a; border-color: #3a3a3a;"></div>
+                    <span class="legend-text">Transparent (pass-through)</span>
+                </div>
+            </div>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #3a3a3a; color: #b0b0b0;">
+                <strong>Symbols:</strong> → = Hold switches to layer | ↔ = Toggle layer on/off
+            </div>
+        </div>
+
+        <div id="layersContainer"></div>
+    </div>
+
+    <script>
+        const layers = {
+            BASE: {
+                name: "BASE",
+                description: "Default QWERTY layer with home row modifiers and tap-preferred hold-taps for Ctrl combinations",
+                keys: [
+                    ["td1", "Q", "W", "E", "R", "T"],
+                    ["TAB→STUFF", "A", "S", "D", "F", "G"],
+                    ["SHFT", "Z", "X", "C", "V", "B"],
+                    ["", "", "", "CTRL", "RET→LOWR", "SPC→NAV", "", "", ""],
+                    ["Y", "U", "I", "O", "P", "BSPC"],
+                    ["H", "J", "K", "L", ";", "'"],
+                    ["N", "M", ",", ".", "/", "-/aTAB"],
+                    ["", "", "", "SPC/GUI", "BSPC→RAISE", "ALT", "", "", ""]
+                ],
+                keyTypes: [
+                    ["special", "combo", "combo", "combo", "combo", "combo"],
+                    ["layer", "combo", "combo", "normal", "combo", "normal"],
+                    ["modifier", "combo", "combo", "combo", "combo", "normal"],
+                    ["", "", "", "modifier", "layer", "layer", "", "", ""],
+                    ["normal", "normal", "normal", "normal", "normal", "normal"],
+                    ["normal", "normal", "normal", "combo", "normal", "normal"],
+                    ["normal", "normal", "normal", "normal", "normal", "combo"],
+                    ["", "", "", "modifier", "layer", "modifier", "", "", ""]
+                ]
+            },
+            LOWR: {
+                name: "LOWER",
+                description: "Number pad, function keys, media controls, and system shortcuts",
+                keys: [
+                    ["`/~", "*", "7/F7", "8/F8", "9/F9", "+/F10"],
+                    ["TAB", "/", "4/F4", "5/F5", "6/F6", "-/F11"],
+                    ["BSPC", "0", "1/F1", "2/F2", "3/F3", "LNC/F12"],
+                    ["", "", "", ".", "▽", "GUI", "", "", ""],
+                    ["", "", "PSCRN", "", "", "GAME↔"],
+                    ["", "VOL-", "MUTE", "VOL+", "", "SLEEP"],
+                    ["SCRSH", "PREV", "PAUSE", "NEXT", "\\", "PWR"],
+                    ["", "", "", "GUI", "▽", "", "", "", ""]
+                ],
+                keyTypes: [
+                    ["combo", "normal", "combo", "combo", "combo", "combo"],
+                    ["special", "normal", "combo", "combo", "combo", "combo"],
+                    ["normal", "normal", "combo", "combo", "combo", "combo"],
+                    ["", "", "", "normal", "trans", "modifier", "", "", ""],
+                    ["trans", "trans", "special", "trans", "trans", "layer"],
+                    ["trans", "special", "special", "special", "trans", "special"],
+                    ["special", "special", "special", "special", "normal", "special"],
+                    ["", "", "", "modifier", "trans", "trans", "", "", ""]
+                ]
+            },
+            RAISE: {
+                name: "RAISE",
+                description: "Symbols, brackets, and Bluetooth controls",
+                keys: [
+                    ["BT CLR", "BT 1", "BT 2", "BT 3", "BT 4", "BT 5"],
+                    ["^", "!", "@", "#", "$", "%"],
+                    ["", "=", "-", "+", "/", "*"],
+                    ["", "", "", "", "▽", "", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["^", "&", "*", "(", ")", "|"],
+                    ["(", ")", "[", "]", "{", "}"],
+                    ["", "", "", "", "▽", "", "", "", ""]
+                ],
+                keyTypes: [
+                    ["special", "special", "special", "special", "special", "special"],
+                    ["normal", "normal", "normal", "normal", "normal", "normal"],
+                    ["trans", "normal", "normal", "normal", "normal", "normal"],
+                    ["", "", "", "trans", "trans", "trans", "", "", ""],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["normal", "normal", "normal", "normal", "normal", "normal"],
+                    ["normal", "normal", "normal", "normal", "normal", "normal"],
+                    ["", "", "", "trans", "trans", "trans", "", "", ""]
+                ]
+            },
+            NAV: {
+                name: "NAV",
+                description: "Navigation arrows, browser controls, and window management",
+                keys: [
+                    ["", "BACK", "TAB←", "CLOSE", "TAB→", "FWD"],
+                    ["CLOSE", "WIN←", "←", "↓", "→", ""],
+                    ["WIN↓", "WIN↑", "WIN←", "WIN→", "NEXT", "PREV"],
+                    ["", "", "", "", "", "▽", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", "", "", "", ""]
+                ],
+                keyTypes: [
+                    ["trans", "special", "special", "special", "special", "special"],
+                    ["special", "special", "normal", "normal", "normal", "trans"],
+                    ["special", "special", "special", "special", "special", "special"],
+                    ["", "", "", "trans", "trans", "trans", "", "", ""],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["", "", "", "trans", "trans", "trans", "", "", ""]
+                ]
+            },
+            GAME: {
+                name: "GAME",
+                description: "Gaming optimized layout - clean QWERTY with standard modifiers",
+                keys: [
+                    ["ESC", "Q", "W", "E", "R", "T"],
+                    ["TAB", "A", "S", "D", "F", "G"],
+                    ["SHFT", "Z", "X", "C", "V", "B"],
+                    ["", "", "", "CTRL", "→GAME_NUM", "SPC", "", "", ""],
+                    ["Y", "U", "I", "O", "P", "BSPC"],
+                    ["H", "J", "K", "L", ";", "'"],
+                    ["N", "M", ",", ".", "/", "EXIT"],
+                    ["", "", "", "SPC", "RET", "ALT", "", "", ""]
+                ],
+                keyTypes: [
+                    ["normal", "normal", "normal", "normal", "normal", "normal"],
+                    ["normal", "normal", "normal", "normal", "normal", "normal"],
+                    ["modifier", "normal", "normal", "normal", "normal", "normal"],
+                    ["", "", "", "modifier", "layer", "normal", "", "", ""],
+                    ["normal", "normal", "normal", "normal", "normal", "normal"],
+                    ["normal", "normal", "normal", "normal", "normal", "normal"],
+                    ["normal", "normal", "normal", "normal", "normal", "layer"],
+                    ["", "", "", "normal", "normal", "modifier", "", "", ""]
+                ]
+            },
+            MOUSELR: {
+                name: "MOUSE",
+                description: "Mouse scroll controls and click buttons",
+                keys: [
+                    ["", "", "PGUP", "SCR↑", "PGDN", ""],
+                    ["", "", "SCR←", "SCR↓", "SCR→", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "RCLK", "LCLK", "MCLK", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "MCLK", "LCLK", "RCLK", "", "", ""]
+                ],
+                keyTypes: [
+                    ["trans", "trans", "normal", "special", "normal", "trans"],
+                    ["trans", "trans", "special", "special", "special", "trans"],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["", "", "", "special", "special", "special", "", "", ""],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["", "", "", "special", "special", "special", "", "", ""]
+                ]
+            },
+            MOUSE_TP_SET: {
+                name: "TP SETTINGS",
+                description: "Trackpoint and mouse sensitivity settings (activated by holding LOWR+RAISE)",
+                keys: [
+                    ["", "", "", "SENS-", "SENS+", "PT_I"],
+                    ["RESET", "RESET", "", "NEG-", "NEG+", "PT_D"],
+                    ["LOG", "LOG", "", "VAL-", "VAL+", ""],
+                    ["", "", "", "TOGGLE", "LCLK", "RCLK", "", "", ""],
+                    ["PT_I", "SENS-", "SENS+", "", "", ""],
+                    ["PT_D", "NEG-", "NEG+", "", "RESET", "RESET"],
+                    ["", "VAL-", "VAL+", "", "LOG", "LOG"],
+                    ["", "", "", "MCLK", "LCLK", "RCLK", "", "", ""]
+                ],
+                keyTypes: [
+                    ["trans", "trans", "trans", "special", "special", "special"],
+                    ["special", "special", "trans", "special", "special", "special"],
+                    ["special", "special", "trans", "special", "special", "trans"],
+                    ["", "", "", "layer", "special", "special", "", "", ""],
+                    ["special", "special", "special", "trans", "trans", "trans"],
+                    ["special", "special", "special", "trans", "special", "special"],
+                    ["trans", "special", "special", "trans", "special", "special"],
+                    ["", "", "", "special", "special", "special", "", "", ""]
+                ]
+            },
+            STUFF: {
+                name: "STUFF",
+                description: "Text editing navigation - word and line movement shortcuts",
+                keys: [
+                    ["", "", "PGUP", "↑", "PGDN", ""],
+                    ["", "", "←", "↓", "→", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", "", "", "", ""],
+                    ["DEL←W", "BSPC", "↑", "DEL", "DEL→W", "PGUP"],
+                    ["WORD←", "←", "↓", "→", "WORD→", "PGDN"],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", "", "", "", ""]
+                ],
+                keyTypes: [
+                    ["trans", "trans", "normal", "normal", "normal", "trans"],
+                    ["trans", "trans", "normal", "normal", "normal", "trans"],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["", "", "", "trans", "trans", "trans", "", "", ""],
+                    ["special", "normal", "normal", "normal", "special", "normal"],
+                    ["special", "normal", "normal", "normal", "special", "normal"],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["", "", "", "trans", "trans", "trans", "", "", ""]
+                ]
+            },
+            GAME_NUM: {
+                name: "GAME NUM",
+                description: "Number pad for gaming layer",
+                keys: [
+                    ["~", "", "7", "8", "9", ""],
+                    ["", "", "4", "5", "6", ""],
+                    ["", "0", "1", "2", "3", ""],
+                    ["", "", "", "", "▽", "", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", ""],
+                    ["", "", "", "", "", "", "", "", ""]
+                ],
+                keyTypes: [
+                    ["normal", "trans", "normal", "normal", "normal", "trans"],
+                    ["trans", "trans", "normal", "normal", "normal", "trans"],
+                    ["trans", "normal", "normal", "normal", "normal", "trans"],
+                    ["", "", "", "trans", "trans", "trans", "", "", ""],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["trans", "trans", "trans", "trans", "trans", "trans"],
+                    ["", "", "", "trans", "trans", "trans", "", "", ""]
+                ]
+            }
+        };
+
+        function getKeyClass(type) {
+            const classMap = {
+                'modifier': 'key-modifier',
+                'layer': 'key-layer',
+                'special': 'key-special',
+                'combo': 'key-combo',
+                'trans': 'key-trans',
+                'normal': 'key-normal'
+            };
+            return classMap[type] || 'key-normal';
+        }
+
+        function renderLayer(layerKey) {
+            const layer = layers[layerKey];
+
+            const section = document.createElement('div');
+            section.className = 'layer-section';
+
+            const header = document.createElement('div');
+            header.className = 'layer-header';
+            header.innerHTML = `
+                <div class="layer-title">${layer.name}</div>
+                <div class="layer-description">${layer.description}</div>
+            `;
+            section.appendChild(header);
+
+            const keyboard = document.createElement('div');
+            keyboard.className = 'keyboard';
+
+            // Left half
+            const leftHalf = document.createElement('div');
+            leftHalf.className = 'keyboard-half';
+
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 6; col++) {
+                    const key = document.createElement('div');
+                    const keyLabel = layer.keys[row][col];
+                    const keyType = layer.keyTypes[row][col];
+
+                    key.className = `key ${getKeyClass(keyType)}`;
+                    key.innerHTML = `<div class="key-label">${keyLabel}</div>`;
+                    leftHalf.appendChild(key);
+                }
+            }
+
+            const leftThumbRow = document.createElement('div');
+            leftThumbRow.className = 'thumb-row';
+            for (let i = 3; i < 6; i++) {
+                const key = document.createElement('div');
+                const keyLabel = layer.keys[3][i];
+                const keyType = layer.keyTypes[3][i];
+
+                key.className = `key ${getKeyClass(keyType)}`;
+                key.innerHTML = `<div class="key-label">${keyLabel}</div>`;
+                leftThumbRow.appendChild(key);
+            }
+            leftHalf.appendChild(leftThumbRow);
+
+            // Right half
+            const rightHalf = document.createElement('div');
+            rightHalf.className = 'keyboard-half';
+
+            for (let row = 4; row < 7; row++) {
+                for (let col = 0; col < 6; col++) {
+                    const key = document.createElement('div');
+                    const keyLabel = layer.keys[row][col];
+                    const keyType = layer.keyTypes[row][col];
+
+                    key.className = `key ${getKeyClass(keyType)}`;
+                    key.innerHTML = `<div class="key-label">${keyLabel}</div>`;
+                    rightHalf.appendChild(key);
+                }
+            }
+
+            const rightThumbRow = document.createElement('div');
+            rightThumbRow.className = 'thumb-row';
+            for (let i = 3; i < 6; i++) {
+                const key = document.createElement('div');
+                const keyLabel = layer.keys[7][i];
+                const keyType = layer.keyTypes[7][i];
+
+                key.className = `key ${getKeyClass(keyType)}`;
+                key.innerHTML = `<div class="key-label">${keyLabel}</div>`;
+                rightThumbRow.appendChild(key);
+            }
+            rightHalf.appendChild(rightThumbRow);
+
+            keyboard.appendChild(leftHalf);
+            keyboard.appendChild(rightHalf);
+            section.appendChild(keyboard);
+
+            return section;
+        }
+
+        // Render all layers
+        const container = document.getElementById('layersContainer');
+        Object.keys(layers).forEach(layerKey => {
+            container.appendChild(renderLayer(layerKey));
+        });
+    </script>
+</body>
+</html>
