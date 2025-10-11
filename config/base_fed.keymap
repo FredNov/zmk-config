@@ -278,7 +278,7 @@
 
         nav_layer {
             // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
-            // │     │ffwd │ftlft│fClse│ftrgt│fback│   │     │     │     │     │     │     │
+            // │     │bBack│pTab │tCls │nTab │bFwd │   │     │     │     │     │     │     │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
             // │wCls │wslft│ Left│Down │Right│     │   │     │     │     │     │     │     │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
@@ -287,7 +287,7 @@
             //                   │     │     │     │   │     │     │     │
             //                   └─────┴─────┴─────┘   └─────┴─────┴─────┘
             bindings = <
-                &trans       &kp LG(COMMA)   &kp LC(PG_UP)   &kp LC(W)     &kp LC(PG_DN)    &kp LG(PERIOD)   &trans &trans &trans &trans &trans &trans
+                &trans       &kp LA(LEFT)    &kp LC(PG_UP)   &kp LC(W)     &kp LC(PG_DN)    &kp LA(RIGHT)   &trans &trans &trans &trans &trans &trans
                 &kp LA(F4)   &kp LG(LC(LEFT)) &kp LEFT      &kp DOWN    &kp RIGHT        &trans           &trans &trans &trans &trans &trans &trans
                 &kp LG(DOWN) &kp LG(UP)       &kp LG(LEFT)  &kp LG(RIGHT) &kp LG(LS(LEFT)) &kp LG(LS(RIGHT))     &trans &trans &trans &trans &trans &trans
                                                              &trans       &trans           &trans                &trans &trans &trans
