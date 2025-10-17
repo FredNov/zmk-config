@@ -4,14 +4,17 @@
  * Layer Tap Settings
  */
 &lt {
-    // Increase layer tap time
-    tapping-term-ms = <300>;
+    // Faster layer activation for more responsive hold behavior
+    tapping-term-ms = <200>;
 
     // Quickly tap-tap-holding the lt button will repeat the tap behavior
     // For example enter-enter-hold, will output multiple enter while you
     // keep holding the key.
     // But holding enter without double tapping, will activate the layer.
      quick-tap-ms = <200>;
+
+     // Only activate hold if you pause before pressing (prevents accidental layer activation while typing fast)
+     require-prior-idle-ms = <125>;
 
      flavor = "balanced";
 };
