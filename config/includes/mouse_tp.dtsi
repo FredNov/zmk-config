@@ -73,7 +73,7 @@
   // (usually the right side)
   #ifdef MOUSE_PS2_DT_PRESENT
 
-   #define PS2_MOUSE_SAMPLING_RATE 100
+   #define PS2_MOUSE_SAMPLING_RATE 60
 
    /*
     * Input Accelerator Config
