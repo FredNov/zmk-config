@@ -73,7 +73,7 @@
   // (usually the right side)
   #ifdef MOUSE_PS2_DT_PRESENT
 
-   #define PS2_MOUSE_SAMPLING_RATE 60
+   #define PS2_MOUSE_SAMPLING_RATE 40
 
    /*
     * Input Accelerator Config
@@ -194,7 +194,7 @@
       //
       // If you are using mouse acceleration, please make sure to set the
       // same value for the input-default-sending-rate option.
-      // sampling-rate = <PS2_MOUSE_SAMPLING_RATE>;
+      sampling-rate = <PS2_MOUSE_SAMPLING_RATE>;
 
 
       // Disables clicking.
