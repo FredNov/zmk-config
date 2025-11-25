@@ -47,6 +47,9 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9)
  * Nice!View
  */
 
+// Commented out to prevent pin conflicts with keyboard matrix
+// The SPI configuration was reserving P0.20 (pro_micro 20) which is needed for column 1
+/*
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -76,3 +79,4 @@ nice_view_spi: &spi0 {
 &pro_micro_i2c {
     status = "disabled";
 };
+*/
